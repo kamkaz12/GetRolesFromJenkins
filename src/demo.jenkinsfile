@@ -3,14 +3,6 @@
 def code
 
 node() {
-    stage('Load') {
-        code = load 'src\\Example'
-    }
-
-    stage('Execute') {
-        code.example1()
-    }
-
     stage('demo'){
         Example2 ex2 = new Example2()
         String value = ex2.getString()
@@ -18,4 +10,3 @@ node() {
     }
 }
 
-code.example2()
