@@ -1,3 +1,5 @@
+package com
+
 class Example2 {
 
     String getString() {

@@ -1,5 +1,7 @@
 @Library('demo-shared-libraries') _
 
+import com.Example2
+
 def code
 
 node() {
