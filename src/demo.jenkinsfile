@@ -1,12 +1,8 @@
 def code
 
 node() {
-    stage('Checkout') {
-        checkout scm
-    }
-
     stage('Load') {
-        code = load 'example.groovy'
+        code = load 'src\\example.groovy'
     }
 
     stage('Execute') {
