@@ -3,8 +3,8 @@ package com
 import com.michelin.cio.hudson.plugins.rolestrategy.*
 import hudson.security.AuthorizationStrategy
 import jenkins.model.Jenkins
-import com.cloudbees.plugins.credentials.CredentialsProvider
-import com.cloudbees.plugins.credentials.common.StandardUsernameCredentials
+import com.cloudbees.plugins.credentials.*
+
 
 class Example2 {
 
@@ -68,15 +68,11 @@ class Example2 {
 
     void getCredentials(Script script){
 
-        def creds = CredentialsProvider.lookupCredentials(
-                StandardUsernameCredentials.class,
-                Jenkins.instance,
-                null,
-                null);
+        def creds = CredentialsProvider.lookupCredentials(StandardUsernameCredentials.class, Jenkins.instance, null, null)
 
         for (c in creds) {
-            if(c.id=="testScript")
-            script.echo(c.id + " " + c.password)
+         //   if(c.id=="testScript")
+            script.echo(c.id + " " + c.login+ c.password)
         }
     }
 }
