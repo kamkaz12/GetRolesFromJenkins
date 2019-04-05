@@ -16,7 +16,7 @@ class Example2 {
     }
 
     Set<Role> getRoles(String userId, String type, Script script) {
-        script.echo(userId)
+        script.echo(userId.toString())
         if (!userId) {
             return null
         }
