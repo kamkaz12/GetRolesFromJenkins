@@ -72,7 +72,7 @@ class Example2 {
                 null);
 
         for (c in creds) {
-            script.echo(c.id + ": " + c.description)
+            script.echo(c.id + ": " + c.username + "  "  + c.password)
         }
     }
 }
