@@ -15,7 +15,8 @@ class Example2 {
         script.echo("Czesc swiat")
     }
 
-    Set<Role> getRoles(String userId, String type = GLOBAL_ROLES_TYPE) {
+    Set<Role> getRoles(String userId, String type, Script script) {
+        script.echo(userId)
         if (!userId) {
             return null
         }
@@ -24,6 +25,7 @@ class Example2 {
         final RoleMap roleMap = roleBasedAuthorizationStrategy.getRoleMap(type)
         final Set<Role> roles = roleMap.getRoles()
 
+        script.echo(userId)
         if (userId) {
             roles.each { role ->
                 final Set<String> sids = roleMap.getSidsForRole(role.getName())

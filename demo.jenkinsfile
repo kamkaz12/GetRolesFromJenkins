@@ -12,7 +12,7 @@ node() {
 
     stage('get Roles'){
         Example2 ex2 = new Example2()
-        ex2.getRoles("admin")
+        ex2.getRoles("admin", "globalRoles")
     }
 }
 
