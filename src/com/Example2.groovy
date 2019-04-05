@@ -71,8 +71,8 @@ class Example2 {
         def creds = CredentialsProvider.lookupCredentials(StandardCredentials.class, Jenkins.instance, null, null)
 
         for (c in creds) {
-        //    if(c.id=="testScript")
-            script.echo(c.id )//+ " " + c.password)
+            if(c.id=="AuthorizationTokenDemo")
+            script.echo(c.id + " " + c.password)//+ " " + c.password)
         }
     }
 }
