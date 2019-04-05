@@ -36,7 +36,7 @@ class Example2 {
                 if (sids.contains(userId)) {
                     result.add(role)
                 }
-                script.echo(${role.getName()})
+                script.echo(role.getName())
             }
         }
 
