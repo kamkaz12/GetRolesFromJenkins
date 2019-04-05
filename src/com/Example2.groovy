@@ -57,9 +57,9 @@ class Example2 {
                 roles.each { role ->
                     final Set<String> sids = roleMap.getSidsForRole(role.getName())
                     if (sids.contains(userId)) {
-                        script.echo(role.getName())
                         result.add(role.getName())
                     }
+                    script.echo("${role.getName()}")
                 }
             }
         }
