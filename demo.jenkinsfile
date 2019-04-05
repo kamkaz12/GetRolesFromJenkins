@@ -20,5 +20,11 @@ node() {
         Example2 ex2 = new Example2()
         ex2.testScript(this)
     }
+
+    stage('get credentials'){
+        withCredentials([string(credentialsId: 'AuthorizationTokenDemo', variable: 'Token')]) {
+
+        }
+    }
 }
 

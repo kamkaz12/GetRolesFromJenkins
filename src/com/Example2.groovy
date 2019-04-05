@@ -41,14 +41,14 @@ class Example2 {
     }
 
 
-    void testScript(Script script) {
+    List<String> testScript(Script script) {
         String userId = "User"
         String type = "globalRoles"
 
         try {
-            RoleBasedAuthorizationStrategy roleBasedAuthorizationStrategy;
-            final AuthorizationStrategy authorizationStrategy = Jenkins.get().getAuthorizationStrategy();
-            roleBasedAuthorizationStrategy = (RoleBasedAuthorizationStrategy) authorizationStrategy;
+            RoleBasedAuthorizationStrategy roleBasedAuthorizationStrategy
+            final AuthorizationStrategy authorizationStrategy = Jenkins.get().getAuthorizationStrategy()
+            roleBasedAuthorizationStrategy = (RoleBasedAuthorizationStrategy) authorizationStrategy
 
             final List<String> result = new LinkedList<>()
             final RoleMap roleMap = roleBasedAuthorizationStrategy.getRoleMap(type)
@@ -56,15 +56,15 @@ class Example2 {
             if (userId) {
                 roles.each { role ->
                     final Set<String> sids = roleMap.getSidsForRole(role.getName())
-                    if (sids.contains(userId)) {
-                        result.add(role.getName())
-                    }
-                    script.echo("${role.getName()}")
+                    result.add(role.getName())
                 }
             }
+            return result
         }
         catch (Exception ex) {
-
         }
+        return null
     }
+
+    
 }
