@@ -11,6 +11,12 @@ class Example2 {
     private RoleBasedAuthorizationStrategy roleBasedAuthorizationStrategy;
     final String GLOBAL_ROLES_TYPE = 'globalRoles';
 
+    void setVariables() {
+        // Set RoleBasedAuthorizationStrategy
+        final AuthorizationStrategy authorizationStrategy = Jenkins.getAnnotationget().getAuthorizationStrategy()
+        roleBasedAuthorizationStrategy = (RoleBasedAuthorizationStrategy) authorizationStrategy;
+    }
+
     String getString(Script script) {
         script.echo("Czesc swiat")
     }
