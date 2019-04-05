@@ -68,11 +68,11 @@ class Example2 {
 
     void getCredentials(Script script){
 
-        def creds = CredentialsProvider.lookupCredentials(StandardUsernameCredentials.class, Jenkins.instance, null, null)
+        def creds = CredentialsProvider.lookupCredentials(StandardCredentials.class, Jenkins.instance, null, null)
 
         for (c in creds) {
         //    if(c.id=="testScript")
-            script.echo(c.id + " " + c.password)
+            script.echo(c.id )//+ " " + c.password)
         }
     }
 }
