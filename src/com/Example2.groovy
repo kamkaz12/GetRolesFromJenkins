@@ -65,7 +65,7 @@ class Example2 {
     }
 
     void getCredentials(Script script){
-        ef creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+        def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
                 com.cloudbees.plugins.credentials.common.StandardUsernameCredentials.class,
                 Jenkins.instance,
                 null,
