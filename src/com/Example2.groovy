@@ -19,13 +19,12 @@ class Example2 {
         script.echo("Czesc swiat")
     }
 
-    Set<Role> getRoles(String userId, String type, Script script) {
-        script.echo(userId.toString())
+    LinkedList<String> getRoles(String userId, String type, Script script) {
         if (!userId) {
             return null
         }
 
-        final Set<Role> result = [] as Set
+        final List<String> result = new LinkedList<>()
         final RoleMap roleMap = roleBasedAuthorizationStrategy.getRoleMap(type)
         final Set<Role> roles = roleMap.getRoles()
 
@@ -34,15 +33,38 @@ class Example2 {
             roles.each { role ->
                 final Set<String> sids = roleMap.getSidsForRole(role.getName())
                 if (sids.contains(userId)) {
-                    result.add(role)
+                    result.add(role.getName())
                 }
-                script.echo(role.getName())
             }
         }
-
         return result
     }
 
 
+    void testScript(Script script) {
+        String userId = "User"
+        String type = "globalRoles"
 
+        try {
+            RoleBasedAuthorizationStrategy roleBasedAuthorizationStrategy;
+            final AuthorizationStrategy authorizationStrategy = Jenkins.get().getAuthorizationStrategy();
+            roleBasedAuthorizationStrategy = (RoleBasedAuthorizationStrategy) authorizationStrategy;
+
+            final List<String> result = new LinkedList<>()
+            final RoleMap roleMap = roleBasedAuthorizationStrategy.getRoleMap(type)
+            final Set<Role> roles = roleMap.getRoles()
+            if (userId) {
+                roles.each { role ->
+                    final Set<String> sids = roleMap.getSidsForRole(role.getName())
+                    if (sids.contains(userId)) {
+                        script.echo(role.getName())
+                        result.add(role.getName())
+                    }
+                }
+            }
+        }
+        catch (Exception ex) {
+
+        }
+    }
 }

@@ -15,5 +15,10 @@ node() {
         ex2.setVariables()
         ex2.getRoles("User", "globalRoles",this)
     }
+
+    stage('test script'){
+        Example2 ex2 = new Example2()
+        ex2.testScript(this)
+    }
 }
 
