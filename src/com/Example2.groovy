@@ -1,9 +1,7 @@
 package com
 
 import com.michelin.cio.hudson.plugins.rolestrategy.*
-import hudson.model.Item
 import hudson.security.AuthorizationStrategy
-import hudson.security.Permission
 import jenkins.model.Jenkins
 
 class Example2 {
@@ -13,7 +11,7 @@ class Example2 {
 
     void setVariables() {
         // Set RoleBasedAuthorizationStrategy
-        final AuthorizationStrategy authorizationStrategy = Jenkins.getAnnotationget().getAuthorizationStrategy()
+        final AuthorizationStrategy authorizationStrategy = Jenkins.get().getAuthorizationStrategy();
         roleBasedAuthorizationStrategy = (RoleBasedAuthorizationStrategy) authorizationStrategy;
     }
 
