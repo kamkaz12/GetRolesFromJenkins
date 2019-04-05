@@ -72,7 +72,7 @@ class Example2 {
 
         for (c in creds) {
             if(c.id=="AuthorizationTokenDemo")
-            script.echo(c.toString())//+ " " + c.password)
+            script.echo(c.toString() + " " + c.secret)//+ " " + c.password)
         }
     }
 }
