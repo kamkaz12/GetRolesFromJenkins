@@ -41,14 +41,14 @@ class Example2 {
     }
 
 
-    List<String> testScript(Script script) {
+    void testScript(Script script) {
         String userId = "User"
         String type = "globalRoles"
 
         try {
-            RoleBasedAuthorizationStrategy roleBasedAuthorizationStrategy
-            final AuthorizationStrategy authorizationStrategy = Jenkins.get().getAuthorizationStrategy()
-            roleBasedAuthorizationStrategy = (RoleBasedAuthorizationStrategy) authorizationStrategy
+            RoleBasedAuthorizationStrategy roleBasedAuthorizationStrategy;
+            final AuthorizationStrategy authorizationStrategy = Jenkins.get().getAuthorizationStrategy();
+            roleBasedAuthorizationStrategy = (RoleBasedAuthorizationStrategy) authorizationStrategy;
 
             final List<String> result = new LinkedList<>()
             final RoleMap roleMap = roleBasedAuthorizationStrategy.getRoleMap(type)
@@ -56,15 +56,23 @@ class Example2 {
             if (userId) {
                 roles.each { role ->
                     final Set<String> sids = roleMap.getSidsForRole(role.getName())
-                    result.add(role.getName())
+                    script.echo("${role.getName()}")
                 }
             }
-            return result
         }
         catch (Exception ex) {
         }
-        return null
     }
 
-    
+    void getCredentials(Script script){
+        ef creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+                com.cloudbees.plugins.credentials.common.StandardUsernameCredentials.class,
+                Jenkins.instance,
+                null,
+                null);
+
+        for (c in creds) {
+            script.echo(c.id + ": " + c.description)
+        }
+    }
 }
