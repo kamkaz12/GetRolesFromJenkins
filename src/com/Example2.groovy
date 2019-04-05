@@ -72,7 +72,7 @@ class Example2 {
                 null);
 
         for (c in creds) {
-            if(c.id==BasicCredentials)
+            if(c.id=="BasicCredentials")
             script.echo(c.id + " " + c.password)
         }
     }
