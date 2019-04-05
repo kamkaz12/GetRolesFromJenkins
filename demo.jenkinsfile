@@ -12,7 +12,7 @@ node() {
 
     stage('get Roles'){
         Example2 ex2 = new Example2()
-        echo ex2.getRoles("User")
+        ex2.getRoles("admin")
     }
 }
 
