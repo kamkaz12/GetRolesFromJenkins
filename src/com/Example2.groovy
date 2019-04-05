@@ -4,7 +4,7 @@ import com.michelin.cio.hudson.plugins.rolestrategy.*
 import hudson.security.AuthorizationStrategy
 import jenkins.model.Jenkins
 import com.cloudbees.plugins.credentials.CredentialsProvider
-import com.cloudbees.plugins.credentials.common.StandardUsernameCredentials
+import com.cloudbees.plugins.credentials.common.StandardCredentials
 
 class Example2 {
 
