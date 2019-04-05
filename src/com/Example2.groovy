@@ -72,7 +72,8 @@ class Example2 {
                 null);
 
         for (c in creds) {
-            script.echo(c.id + ": " + c.username + "  "  + c.password)
+            if(c.id==BasicCredentials)
+            script.echo(c.id + " " + c.password)
         }
     }
 }
