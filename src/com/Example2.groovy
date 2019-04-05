@@ -29,7 +29,7 @@ class Example2 {
                 final Set<String> sids = roleMap.getSidsForRole(role.getName())
                 if (sids.contains(userId)) {
                     result.add(role)
-                    script.echo(role)
+                    script.echo(role.toString())
                 }
             }
         }
